@@ -1,0 +1,6 @@
+C:\Users\Anna\Desktop\Мои программыС#\OOPAirport1\OOPAirport1\bin\Debug\OOPAirport1.exe.config
+C:\Users\Anna\Desktop\Мои программыС#\OOPAirport1\OOPAirport1\obj\Debug\OOPAirport1.csprojResolveAssemblyReference.cache
+C:\Users\Anna\Desktop\Мои программыС#\OOPAirport1\OOPAirport1\bin\Debug\OOPAirport1.exe
+C:\Users\Anna\Desktop\Мои программыС#\OOPAirport1\OOPAirport1\bin\Debug\OOPAirport1.pdb
+C:\Users\Anna\Desktop\Мои программыС#\OOPAirport1\OOPAirport1\obj\Debug\OOPAirport1.exe
+C:\Users\Anna\Desktop\Мои программыС#\OOPAirport1\OOPAirport1\obj\Debug\OOPAirport1.pdb
