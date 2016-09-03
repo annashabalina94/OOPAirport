@@ -15,6 +15,7 @@ namespace OOPAirport1
         public Sex Sex;
         public Nationality Nationality;
     }
+
     enum Nationality
     {
         Unknown = 0,
@@ -24,6 +25,7 @@ namespace OOPAirport1
         Canadian = 4,
         French = 5
     }
+
     enum Sex
     {
         Unknown = 0,

@@ -9,12 +9,19 @@ namespace OOPAirport1
     public interface IAirport
     {
         void PrintArrivals();
+
         void PrintDeparture();
+
         void PrintPriceClassInfo();
+
         void PrintPassengersInfo();
+
         void Create();
+
         void Del();
+
         void Edit();
+
         void Search();
 
     }

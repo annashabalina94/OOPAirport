@@ -21,7 +21,6 @@ namespace OOPAirport1
 
         public Flight(Random random, Classprice Bissnesm, Classprice Economy, FlightStatus Arrival, FlightStatus Departure)
         {
-
             Classprice = (Classprice)random.Next(1, 3);
             if (FlightStatus == FlightStatus.Arrival)
             {
@@ -48,12 +47,14 @@ namespace OOPAirport1
         Arrival = 1,
         Departure = 2
     }
+
     enum Classprice
     {
         Unknown = 0,
         Economy = 1,
         Bissnes = 2
     }
+
     enum Status
     {
         Unknown = 0,

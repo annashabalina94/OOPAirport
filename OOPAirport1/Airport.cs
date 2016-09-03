@@ -115,6 +115,7 @@ namespace OOPAirport1
                     Console.WriteLine(" _____________________________________________________________________");
                 }
         }
+
         public void PrintDeparture()
         {
             Console.WriteLine("Departure: ");
@@ -129,6 +130,7 @@ namespace OOPAirport1
                     Console.WriteLine(" _____________________________________________________________________");
                 }
         }
+
         public void PrintPriceClassInfo()
         {
             Random random = new Random();
@@ -144,6 +146,7 @@ namespace OOPAirport1
 
             }
         }
+
         public void PrintPassengersInfo()
         {
             Console.WriteLine(" ______________________________________________________________________________");
@@ -156,6 +159,7 @@ namespace OOPAirport1
                 Console.WriteLine(" _____________________________________________________________________________");
             }
         }
+
         public void Create()
         {
             Console.Clear();
@@ -247,6 +251,7 @@ namespace OOPAirport1
                 flights.Add(cr2);
             }
         }
+
         public void Del()
         {
             Console.Clear();
@@ -286,6 +291,7 @@ namespace OOPAirport1
                 }
             }
         }
+
         public void Search()
         {
             Console.WriteLine("Input flight number, price, first and second name, passport, direction information wich you want to search");
@@ -314,10 +320,11 @@ namespace OOPAirport1
                 }
             }
         }
+
         public void Edit()
         {
             Console.Clear();
-            Console.WriteLine("What you want to Edit?\nEdit passengers - 1\nEdit flights - 2\nEdit Pricelist - 3");
+            Console.WriteLine("What you want to Edit?\nEdit passengers - 1\nEdit flights - 2");
             ConsoleKeyInfo key1 = new ConsoleKeyInfo();
             key1 = Console.ReadKey();
             if (key1.Key == ConsoleKey.D1 || key1.Key == ConsoleKey.NumPad1)
