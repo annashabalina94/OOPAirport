@@ -16,13 +16,18 @@ namespace OOPAirport1
 
         void PrintPassengersInfo();
 
-        void Create();
+        void CreatePassenger();
 
-        void Del();
+        void CreateFlight();
 
-        void Edit();
+        void DeletePassenger();
+
+        void DeleteFlight();
+
+        void EditPassenger();
+
+        void EditFlight();
 
         void Search();
-
     }
 }

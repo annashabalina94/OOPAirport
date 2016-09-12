@@ -8,7 +8,7 @@ namespace OOPAirport1
 {
     class Flight
     {
-        public List<Passengers> Passengersarr = new List<Passengers>();
+        public List<Passengers> Passengersarr = new List<Passengers>();//Использовать инкапсуляцию. 
         public string Price;
         public Classprice Classprice;
         public string Flightnumber;
@@ -19,7 +19,7 @@ namespace OOPAirport1
         public Status Status;
         public FlightStatus FlightStatus;
 
-        public Flight(Random random, Classprice Bissnesm, Classprice Economy, FlightStatus Arrival, FlightStatus Departure)
+        public Flight(Random random, Classprice bissnesm, Classprice economy, FlightStatus arrival, FlightStatus departure)
         {
             Classprice = (Classprice)random.Next(1, 3);
             if (FlightStatus == FlightStatus.Arrival)

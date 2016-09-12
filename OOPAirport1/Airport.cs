@@ -10,6 +10,11 @@ namespace OOPAirport1
     {
         public Airport()
         {
+            Initialization();
+        }
+
+        public void Initialization()
+        {
             Random random = new Random();
 
             var flight1 = new Flight(random, Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
@@ -104,30 +109,30 @@ namespace OOPAirport1
         {
 
             Console.WriteLine("Arrival: ");
-            Console.WriteLine(" _____________________________________________________________________");
-            Console.WriteLine("| Number  |  Direction   | Date and Time |   Status  | Terminal | Gate|");
+            Console.WriteLine(" ______________________________________________________________________");
+            Console.WriteLine("| Number  |  Direction   | Date and Time |   Status   | Terminal | Gate|");
             Console.WriteLine(" _____________________________________________________________________");
 
             for (int i = 0; i < flights.Count; i++)
                 if (flights[i].FlightStatus == FlightStatus.Arrival)
                 {
-                    Console.WriteLine("|{0,8} | {1,9}    | {2,10}    | {3,08}  | {4}      |{5}  |", flights[i].Flightnumber, flights[i].Direction, flights[i].Datetime, flights[i].Status, flights[i].Terminal, flights[i].Gate);
-                    Console.WriteLine(" _____________________________________________________________________");
+                    Console.WriteLine("|{0,8} | {1,9}    | {2,10}    | {3,10} | {4}        |{5}   |", flights[i].Flightnumber, flights[i].Direction, flights[i].Datetime, flights[i].Status, flights[i].Terminal, flights[i].Gate);
+                    Console.WriteLine(" ______________________________________________________________________");
                 }
         }
 
         public void PrintDeparture()
         {
             Console.WriteLine("Departure: ");
-            Console.WriteLine(" _____________________________________________________________________");
-            Console.WriteLine("| Number  |  Direction   | Date and Time |   Status  | Terminal | Gate|");
-            Console.WriteLine(" _____________________________________________________________________");
+            Console.WriteLine(" ______________________________________________________________________");
+            Console.WriteLine("| Number  |  Direction   | Date and Time |   Status   | Terminal | Gate|");
+            Console.WriteLine(" ______________________________________________________________________");
 
             for (int i = 0; i < flights.Count; i = i + 1)
                 if (flights[i].FlightStatus == FlightStatus.Departure)
                 {
-                    Console.WriteLine("|{0,8} | {1,9}    | {2,10}    | {3,08}  | {4}      |{5}  |", flights[i].Flightnumber, flights[i].Direction, flights[i].Datetime, flights[i].Status, flights[i].Terminal, flights[i].Gate);
-                    Console.WriteLine(" _____________________________________________________________________");
+                    Console.WriteLine("|{0,8} | {1,9}    | {2,10}    | {3,10} | {4}        |{5}   |", flights[i].Flightnumber, flights[i].Direction, flights[i].Datetime, flights[i].Status, flights[i].Terminal, flights[i].Gate);
+                    Console.WriteLine(" ______________________________________________________________________");
                 }
         }
 
@@ -155,140 +160,122 @@ namespace OOPAirport1
 
             for (int i = 0; i < flights.Count; i++)
             {
-                Console.WriteLine("|{0,7} |{1,5} |{2,11} |{3,10}  |{4,8}|{5,4}|{6,3} |{7,5}|", flights[i].Flightnumber, flights[i].Passengersarr[0].Name, flights[i].Passengersarr[0].Secondname, flights[i].Passengersarr[0].Nationality, flights[i].Passengersarr[0].Pasport, flights[i].Passengersarr[0].Dateofbirthday, flights[i].Passengersarr[0].Sex, flights[i].Classprice);
+                Console.WriteLine("|{0,7} |{1,5} |{2,11} |{3,10}   |{4,8}|{5,4}|{6,3} |{7,5}|",
+                flights[i].Flightnumber, flights[i].Passengersarr[0].Name, flights[i].Passengersarr[0].Secondname,
+                flights[i].Passengersarr[0].Nationality, flights[i].Passengersarr[0].Pasport,
+                flights[i].Passengersarr[0].Dateofbirthday, flights[i].Passengersarr[0].Sex, flights[i].Classprice);
                 Console.WriteLine(" _____________________________________________________________________________");
             }
         }
 
-        public void Create()
+        public void CreatePassenger()
         {
             Console.Clear();
-            Console.WriteLine("What you want to create?\nNew passenger - 1\nNew Flight - 2");
-            ConsoleKeyInfo key = new ConsoleKeyInfo();
-            key = Console.ReadKey();
-            Flight cr2 = null;
             Passengers cr = null;
             Random random = new Random();
-            if (key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.NumPad1)
+            Flight cr2 = null;
+            cr2 = new Flight(new Random(), Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
+
+            cr = new Passengers();
+            Console.Clear();
+            Console.Write("Input Name:");
+            cr.Name = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.Write("Input Secondname:");
+            cr.Secondname = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.Write("Input Pasport:");
+            cr.Pasport = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.Write("Input Dateofbirthday D.M.Y: ");
+            cr.Dateofbirthday = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.Write("Sex\nMale - 1\nFemale - 2");
+
+            ConsoleKeyInfo key = Console.ReadKey();
+            Console.Clear();
+            switch (key.Key)
             {
-                cr = new Passengers();
-                Console.Clear();
-                Console.Clear();
-                Console.Write("Input Name:");
-                cr.Name = Console.ReadLine();
+                case ConsoleKey.D1:
+                case ConsoleKey.NumPad1:
+                    cr.Sex = Sex.Male;
+                    break;
 
-                Console.WriteLine();
-                Console.Write("Input Secondname:");
-                cr.Secondname = Console.ReadLine();
+                case ConsoleKey.D2:
+                case ConsoleKey.NumPad2:
+                    cr.Sex = Sex.Female;
+                    break;
+            }
+            flights.Add(cr2);
+            cr2.Passengersarr.Add(cr);
+        }
 
-                Console.WriteLine();
-                Console.Write("Input Pasport:");
-                cr.Pasport = Console.ReadLine();
-
-                Console.WriteLine();
-                Console.WriteLine("Input Dateofbirthday D.M.Y: ");
-                cr.Dateofbirthday = Console.ReadLine();
-
-                Console.WriteLine();
-                Console.WriteLine("Sex\nMale - 1\nFemale - 2");
-
-                switch (key.Key)
-                {
-                    case ConsoleKey.D1:
-                    case ConsoleKey.NumPad1:
-                        Console.Clear();
-                        cr.Sex = Sex.Male;
-                        Console.ReadKey();
-                        break;
-
-                    case ConsoleKey.D2:
-                    case ConsoleKey.NumPad2:
-                        Console.Clear();
-                        cr.Sex = Sex.Female;
-                        Console.ReadKey();
-                        break;
-                }
-                cr2 = new Flight(random, Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
-                cr2.Passengersarr.Add(cr);
-                flights.Add(cr2);
+        public void CreateFlight()
+        {
+            Flight cr2 = null;
+            cr2 = new Flight(new Random(), Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
+            Console.Clear();
+            Console.WriteLine("What you wan to create?\nArrival Flights - 1\nDeparture Flights - 2");
+            ConsoleKeyInfo key2 = new ConsoleKeyInfo();
+            key2 = Console.ReadKey();
+            if (key2.Key == ConsoleKey.D1 || key2.Key == ConsoleKey.NumPad1)
+            {
+                cr2.FlightStatus = FlightStatus.Arrival;
             }
             else
             {
-                cr2 = new Flight(new Random(), Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
-                Console.Clear();
-                Console.WriteLine("What you wan to create?\nArrival Flights - 1\nDeparture Flights - 2");
-                ConsoleKeyInfo key2 = new ConsoleKeyInfo();
-                key2 = Console.ReadKey();
-                if (key2.Key == ConsoleKey.D1 || key2.Key == ConsoleKey.NumPad1)
+                cr2.FlightStatus = FlightStatus.Departure;
+            }
+            Console.Clear();
+            Console.Write("Input flight number: ");
+            cr2.Flightnumber = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.Write("Input City: ");
+            cr2.Direction = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.Write("Input time hh:mm ~ ");
+            cr2.Datetime = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.Write("Input terminal: ");
+            cr2.Terminal = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.Write("Input gate: ");
+            cr2.Gate = Console.ReadLine();
+            flights.Add(cr2);
+        }
+
+        public void DeletePassenger()
+        {
+            Console.Clear();
+            Console.WriteLine("Input Name, Secondname or pasport number");
+            string line = Console.ReadLine();
+            for (int i = 0; i < flights.Count; i++)
+            {
+                for (int j = 0; j < flights[i].Passengersarr.Count; j++)
                 {
-                    cr2.FlightStatus = FlightStatus.Arrival;
+                    if (flights[i].Passengersarr[j].Name.Contains(line) || flights[i].Passengersarr[j].Secondname.Contains(line) || flights[i].Passengersarr[j].Pasport.Contains(line))
+                        flights.RemoveAt(i);
                 }
-                else
-                {
-                    cr2.FlightStatus = FlightStatus.Departure;
-                }
-                Console.Clear();
-                Console.Write("Input flight number: ");
-                cr2.Flightnumber = Console.ReadLine();
-
-                Console.WriteLine();
-                Console.Write("Input City: ");
-                cr2.Direction = Console.ReadLine();
-
-                Console.WriteLine();
-                Console.Write("Input time hh:mm ~ ");
-                cr2.Datetime = Console.ReadLine();
-
-                Console.WriteLine();
-                Console.WriteLine("Input terminal: ");
-                cr2.Terminal = Console.ReadLine();
-
-                Console.WriteLine();
-                Console.WriteLine("Input gate: ");
-                cr2.Gate = Console.ReadLine();
-                Console.ReadKey();
-
-                flights.Add(cr2);
             }
         }
 
-        public void Del()
+        public void DeleteFlight()
         {
             Console.Clear();
-            Console.WriteLine("What you want to delete?\nDelete passenger - 1\nDelete Flight - 2");
-            ConsoleKeyInfo key1 = new ConsoleKeyInfo();
-            key1 = Console.ReadKey();
-            if (key1.Key == ConsoleKey.D1 || key1.Key == ConsoleKey.NumPad1)
+            Console.WriteLine("Input flight number or direction wich you want to delete");
+            string line2 = Console.ReadLine();
+            for (int i = 0; i < flights.Count; i++)
             {
-                Console.WriteLine("Input Name, Secondname or pasport number");
-                string line = Console.ReadLine();
-                for (int i = 0; i < flights.Count; i++)
-                {
-                    for (int j = 0; j < flights[i].Passengersarr.Count; j++)
-                    {
-                        if (flights[i].Passengersarr[j].Name.Contains(line) || flights[i].Passengersarr[j].Secondname.Contains(line) || flights[i].Passengersarr[j].Pasport.Contains(line))
-                            flights.RemoveAt(i);
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("Input flight number or direction wich you want to delete");
-                string line2 = Console.ReadLine();
-                for (int i = 0; i < flights.Count; i++)
-                {
-                    if (flights[i].Flightnumber.Contains(line2) || flights[i].Direction.Contains(line2))
-                        flights.RemoveAt(i);
-                }
-                Console.WriteLine("Press ESC to exit to the main menu");
-                ConsoleKeyInfo key = new ConsoleKeyInfo();
-                key = Console.ReadKey();
-                switch (key.Key)
-                {
-                    case ConsoleKey.Escape:
-                        Console.Clear();
-                        break;
-                }
+                if (flights[i].Flightnumber.Contains(line2) || flights[i].Direction.Contains(line2))
+                    flights.RemoveAt(i);
             }
         }
 
@@ -304,7 +291,8 @@ namespace OOPAirport1
                     Console.WriteLine(" ___________________________________________________________________________");
                     Console.WriteLine("| Number  |  Direction   | Date and Time |   Status  | Terminal | Gate|Price|");
                     Console.WriteLine(" ___________________________________________________________________________");
-                    Console.WriteLine("|{0,8} | {1,9}    | {2,10}    | {3,08}  | {4}      |{5}  |{6}|", flights[i].Flightnumber, flights[i].Direction, flights[i].Datetime, flights[i].Status, flights[i].Terminal, flights[i].Gate, flights[i].Price);
+                    Console.WriteLine("|{0,8} | {1,9}    | {2,10}    | {3,08}  | {4}      |{5}  |{6}|", flights[i].Flightnumber, flights[i].Direction, flights[i].Datetime,
+                    flights[i].Status, flights[i].Terminal, flights[i].Gate, flights[i].Price);
                     Console.WriteLine(" __________________________________________________________________________");
                 }
                 for (int j = 0; j < flights[i].Passengersarr.Count; j++)
@@ -314,104 +302,91 @@ namespace OOPAirport1
                         Console.WriteLine(" ______________________________________________________________________________");
                         Console.WriteLine("| Number | Name | Second Name | Nationality | Pasport |    DB    | Sex | Class |");
                         Console.WriteLine("|________|______|_____________|_____________|_________|__________|_____|_______|");
-                        Console.WriteLine("|{0,7} |{1,5} |{2,11} |{3,10}  |{4,8}|{5,4}|{6,3} |{7,5}|", flights[i].Flightnumber, flights[i].Passengersarr[0].Name, flights[i].Passengersarr[0].Secondname, flights[i].Passengersarr[0].Nationality, flights[i].Passengersarr[0].Pasport, flights[i].Passengersarr[0].Dateofbirthday, flights[i].Passengersarr[0].Sex, flights[i].Classprice);
+                        Console.WriteLine("|{0,7} |{1,5} |{2,11} |{3,10}  |{4,8}|{5,4}|{6,3} |{7,5}|", flights[i].Flightnumber, flights[i].Passengersarr[0].Name,
+                        flights[i].Passengersarr[0].Secondname, flights[i].Passengersarr[0].Nationality, flights[i].Passengersarr[0].Pasport, flights[i].Passengersarr[0].Dateofbirthday,
+                        flights[i].Passengersarr[0].Sex, flights[i].Classprice);
                         Console.WriteLine(" _____________________________________________________________________________");
                     }
                 }
             }
         }
 
-        public void Edit()
+        public void EditPassenger()
         {
             Console.Clear();
-            Console.WriteLine("What you want to Edit?\nEdit passengers - 1\nEdit flights - 2");
-            ConsoleKeyInfo key1 = new ConsoleKeyInfo();
-            key1 = Console.ReadKey();
-            if (key1.Key == ConsoleKey.D1 || key1.Key == ConsoleKey.NumPad1)
+            for (int i = 0; i < flights.Count; i++)
             {
-                for (int i = 0; i < flights.Count; i++)
-                {
-                    for (int j = 0; j < flights[i].Passengersarr.Count; j++)
-                    {
-                        Search();
-                        Console.WriteLine("If you want to edit flight number - 1\nName - 2\nSecondname - 3\nPasport - 5\nDB - 6");
-                        ConsoleKeyInfo key = new ConsoleKeyInfo();
-                        key = Console.ReadKey();
-                        switch (key.Key)
-                        {
-                            case ConsoleKey.D1:
-                            case ConsoleKey.NumPad1:
-                                Console.Clear();
-                                flights[i].Flightnumber = Console.ReadLine();
-                                break;
-
-                            case ConsoleKey.D2:
-                            case ConsoleKey.NumPad2:
-                                Console.Clear();
-                                flights[i].Passengersarr[j].Name = Console.ReadLine();
-                                break;
-
-                            case ConsoleKey.D3:
-                            case ConsoleKey.NumPad3:
-                                Console.Clear();
-                                flights[i].Passengersarr[j].Secondname = Console.ReadLine();
-                                break;
-
-                            case ConsoleKey.D4:
-                            case ConsoleKey.NumPad4:
-                                Console.Clear();
-                                flights[i].Passengersarr[j].Pasport = Console.ReadLine();
-                                break;
-
-                            case ConsoleKey.D5:
-                            case ConsoleKey.NumPad5:
-                                Console.Clear();
-                                flights[i].Passengersarr[j].Dateofbirthday = Console.ReadLine();
-                                break;
-                        }
-                    }
-                }
-            }
-            if (key1.Key == ConsoleKey.D2 || key1.Key == ConsoleKey.NumPad2)
-            {
-                for (int i = 0; i < flights.Count; i++)
+                for (int j = 0; j < flights[i].Passengersarr.Count; j++)
                 {
                     Search();
-                    Console.WriteLine("If you want to edit flight number - 1\nDirection - 2\nDateTime - 3\nTerminal - 4\nGate - 5");
-                    ConsoleKeyInfo key = new ConsoleKeyInfo();
-                    key = Console.ReadKey();
+                    Console.WriteLine("If you want to edit flight number - 1\nName - 2\nSecondname - 3\nPasport - 5\nDB - 6");
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    Console.Clear();
                     switch (key.Key)
                     {
                         case ConsoleKey.D1:
                         case ConsoleKey.NumPad1:
-                            Console.Clear();
                             flights[i].Flightnumber = Console.ReadLine();
                             break;
 
                         case ConsoleKey.D2:
                         case ConsoleKey.NumPad2:
-                            Console.Clear();
-                            flights[i].Direction = Console.ReadLine();
+                            flights[i].Passengersarr[j].Name = Console.ReadLine();
                             break;
 
                         case ConsoleKey.D3:
                         case ConsoleKey.NumPad3:
-                            Console.Clear();
-                            flights[i].Datetime = Console.ReadLine();
+                            flights[i].Passengersarr[j].Secondname = Console.ReadLine();
                             break;
 
                         case ConsoleKey.D4:
                         case ConsoleKey.NumPad4:
-                            Console.Clear();
-                            flights[i].Terminal = Console.ReadLine();
+                            flights[i].Passengersarr[j].Pasport = Console.ReadLine();
                             break;
 
                         case ConsoleKey.D5:
                         case ConsoleKey.NumPad5:
-                            Console.Clear();
-                            flights[i].Gate = Console.ReadLine();
+                            flights[i].Passengersarr[j].Dateofbirthday = Console.ReadLine();
                             break;
                     }
+                }
+            }
+        }
+
+        public void EditFlight()
+        {
+            for (int i = 0; i < flights.Count; i++)
+            {
+                Search();
+                Console.WriteLine("If you want to edit flight number - 1\nDirection - 2\nDateTime - 3\nTerminal - 4\nGate - 5");
+                ConsoleKeyInfo key = Console.ReadKey();
+                Console.Clear();
+                switch (key.Key)
+                {
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
+                        flights[i].Flightnumber = Console.ReadLine();
+                        break;
+
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+                        flights[i].Direction = Console.ReadLine();
+                        break;
+
+                    case ConsoleKey.D3:
+                    case ConsoleKey.NumPad3:
+                        flights[i].Datetime = Console.ReadLine();
+                        break;
+
+                    case ConsoleKey.D4:
+                    case ConsoleKey.NumPad4:
+                        flights[i].Terminal = Console.ReadLine();
+                        break;
+
+                    case ConsoleKey.D5:
+                    case ConsoleKey.NumPad5:
+                        flights[i].Gate = Console.ReadLine();
+                        break;
                 }
             }
         }
