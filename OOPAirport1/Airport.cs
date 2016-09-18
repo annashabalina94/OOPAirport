@@ -8,6 +8,7 @@ namespace OOPAirport1
 {
     public class Airport : IAirport
     {
+
         public Airport()
         {
             Initialization();
@@ -17,90 +18,26 @@ namespace OOPAirport1
         {
             Random random = new Random();
 
-            var flight1 = new Flight(random, Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
-            flight1.FlightStatus = FlightStatus.Arrival;
-            flight1.Flightnumber = "FS 4422";
-            flight1.Direction = "Abu-Dhabi";
-            flight1.Datetime = "14:22";
-            flight1.Terminal = "A";
-            flight1.Gate = "G1";
-            var pasan1 = new Passengers();
-            pasan1.Name = "Ali";
-            pasan1.Secondname = "Baba";
-            pasan1.Pasport = "MT 111 111";
-            pasan1.Dateofbirthday = "08.07.1995";
-            pasan1.Nationality = Nationality.Arab;
-            pasan1.Sex = Sex.Male;
-            flight1.Passengersarr.Add(pasan1);
+            var flight1 = new Flight("2000", Classprice.Bissnes, "FS 4422", "Abu-Dhabi", "14:22", "A", "G1", Status.InFlight, FlightStatus.Arrival);
             flights.Add(flight1);
+            flight1.Addpassenger("Ali", "Baba", "MT 111 111", "08.07.1995", Sex.Male, Nationality.Arab);
+            flight1.Addpassenger("Ali2", "Baba2", "MT 111 1112", "08.07.19952", Sex.Male, Nationality.Arab);
 
-            var flight2 = new Flight(random, Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
-            flight2.FlightStatus = FlightStatus.Arrival;
-            flight2.Flightnumber = "MN 7564";
-            flight2.Direction = "Paris";
-            flight2.Datetime = "13:00";
-            flight2.Terminal = "B";
-            flight2.Gate = "G2";
-            var pasan2 = new Passengers();
-            pasan2.Name = "Ivan";
-            pasan2.Secondname = "Ivanov";
-            pasan2.Pasport = "MT 111 112";
-            pasan2.Dateofbirthday = "08.07.1993";
-            pasan2.Nationality = Nationality.French;
-            pasan2.Sex = Sex.Male;
-            flight2.Passengersarr.Add(pasan2);
+            var flight2 = new Flight("2565", Classprice.Bissnes, "MN 7564", "Paris", "13:00", "B", "G2", Status.GateClosed, FlightStatus.Arrival);
             flights.Add(flight2);
+            flight2.Addpassenger("Ivan", "Ivanov", "MT 111 112", "08.07.1993", Sex.Male, Nationality.French);
 
-            var flight3 = new Flight(random, Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
-            flight3.FlightStatus = FlightStatus.Departure;
-            flight3.Flightnumber = "ST 764";
-            flight3.Direction = "Odessa";
-            flight3.Datetime = "7:40";
-            flight3.Terminal = "B";
-            flight3.Gate = "G3";
-            var pasan3 = new Passengers();
-            pasan3.Name = "Moisha";
-            pasan3.Secondname = "Snipperson";
-            pasan3.Pasport = "MT 111 113";
-            pasan3.Dateofbirthday = "08.07.1992";
-            pasan3.Nationality = Nationality.Jew;
-            pasan3.Sex = Sex.Male;
-            flight3.Passengersarr.Add(pasan3);
+            var flight3 = new Flight("764", Classprice.Economy, "ST 764", "Odessa", "7:40", "B", "G3", Status.InFlight, FlightStatus.Departure);
             flights.Add(flight3);
+            flight3.Addpassenger("Moisha", "Snipperson", "MT 111 113", "08.07.1992", Sex.Male, Nationality.Jew);
 
-            var flight4 = new Flight(random, Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
-            flight4.FlightStatus = FlightStatus.Departure;
-            flight4.Flightnumber = "DC 678";
-            flight4.Direction = "Kiev";
-            flight4.Datetime = "17:15";
-            flight4.Terminal = "A";
-            flight4.Gate = "G1";
-            var pasan4 = new Passengers();
-            pasan4.Name = "Anna";
-            pasan4.Secondname = "Shabalina";
-            pasan4.Pasport = "MT 111 114";
-            pasan4.Dateofbirthday = "08.07.1994";
-            pasan4.Nationality = Nationality.Ukranian;
-            pasan4.Sex = Sex.Female;
-            flight4.Passengersarr.Add(pasan4);
+            var flight4 = new Flight("200", Classprice.Economy, "DC 678", "Kiev", "17:15", "A", "G1", Status.Canceled, FlightStatus.Departure);
             flights.Add(flight4);
+            flight4.Addpassenger("Anna", "Shabalina", "MT 111 114", "08.07.1994", Sex.Female, Nationality.Ukranian);
 
-            var flight5 = new Flight(random, Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
-            flight5.FlightStatus = FlightStatus.Arrival;
-            flight5.Flightnumber = "QS 6789";
-            flight5.Direction = "Toronto";
-            flight5.Datetime = "11:10";
-            flight5.Terminal = "B";
-            flight5.Gate = "G2";
-            var pasan5 = new Passengers();
-            pasan5.Name = "Petr";
-            pasan5.Secondname = "Petrov";
-            pasan5.Pasport = "MT 111 115";
-            pasan5.Dateofbirthday = "08.07.1990";
-            pasan5.Nationality = Nationality.Canadian;
-            pasan5.Sex = Sex.Male;
-            flight5.Passengersarr.Add(pasan5);
+            var flight5 = new Flight("3000", Classprice.Bissnes, "QS 6789", "Toronto", "11:10", "B", "G2", Status.Arrived, FlightStatus.Arrival);
             flights.Add(flight5);
+            flight5.Addpassenger("Petr", "Petrov", "MT 111 115", "08.07.1990", Sex.Male, Nationality.Canadian);
         }
 
         List<Flight> flights = new List<Flight>();
@@ -116,7 +53,8 @@ namespace OOPAirport1
             for (int i = 0; i < flights.Count; i++)
                 if (flights[i].FlightStatus == FlightStatus.Arrival)
                 {
-                    Console.WriteLine("|{0,8} | {1,9}    | {2,10}    | {3,10} | {4}        |{5}   |", flights[i].Flightnumber, flights[i].Direction, flights[i].Datetime, flights[i].Status, flights[i].Terminal, flights[i].Gate);
+                    Console.WriteLine("|{0,8} | {1,9}    | {2,10}    | {3,10} | {4}        |{5}   |", flights[i].Flightnumber, flights[i].Direction, flights[i].Datetime,
+                        flights[i].Status, flights[i].Terminal, flights[i].Gate);
                     Console.WriteLine(" ______________________________________________________________________");
                 }
         }
@@ -131,7 +69,8 @@ namespace OOPAirport1
             for (int i = 0; i < flights.Count; i = i + 1)
                 if (flights[i].FlightStatus == FlightStatus.Departure)
                 {
-                    Console.WriteLine("|{0,8} | {1,9}    | {2,10}    | {3,10} | {4}        |{5}   |", flights[i].Flightnumber, flights[i].Direction, flights[i].Datetime, flights[i].Status, flights[i].Terminal, flights[i].Gate);
+                    Console.WriteLine("|{0,8} | {1,9}    | {2,10}    | {3,10} | {4}        |{5}   |", flights[i].Flightnumber, flights[i].Direction, flights[i].Datetime,
+                        flights[i].Status, flights[i].Terminal, flights[i].Gate);
                     Console.WriteLine(" ______________________________________________________________________");
                 }
         }
@@ -160,11 +99,14 @@ namespace OOPAirport1
 
             for (int i = 0; i < flights.Count; i++)
             {
-                Console.WriteLine("|{0,7} |{1,5} |{2,11} |{3,10}   |{4,8}|{5,4}|{6,3} |{7,5}|",
-                flights[i].Flightnumber, flights[i].Passengersarr[0].Name, flights[i].Passengersarr[0].Secondname,
-                flights[i].Passengersarr[0].Nationality, flights[i].Passengersarr[0].Pasport,
-                flights[i].Passengersarr[0].Dateofbirthday, flights[i].Passengersarr[0].Sex, flights[i].Classprice);
-                Console.WriteLine(" _____________________________________________________________________________");
+                for (int j = 0; j < flights[i].Passengersarr.Count; j++)
+                {
+                    Console.WriteLine("|{0,7} |{1,5} |{2,11} |{3,10}   |{4,8}|{5,4}|{6,3} |{7,5}|",
+              flights[i].Flightnumber, flights[i].Passengersarr[j].Name, flights[i].Passengersarr[j].Secondname,
+              flights[i].Passengersarr[j].Nationality, flights[i].Passengersarr[j].Pasport,
+              flights[i].Passengersarr[j].Dateofbirthday, flights[i].Passengersarr[j].Sex, flights[i].Classprice);
+                    Console.WriteLine(" _____________________________________________________________________________");
+                }
             }
         }
 
@@ -174,7 +116,7 @@ namespace OOPAirport1
             Passengers cr = null;
             Random random = new Random();
             Flight cr2 = null;
-            cr2 = new Flight(new Random(), Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
+            cr2 = new Flight();
 
             cr = new Passengers();
             Console.Clear();
@@ -217,7 +159,7 @@ namespace OOPAirport1
         public void CreateFlight()
         {
             Flight cr2 = null;
-            cr2 = new Flight(new Random(), Classprice.Bissnes, Classprice.Economy, FlightStatus.Arrival, FlightStatus.Departure);
+            cr2 = new Flight();
             Console.Clear();
             Console.WriteLine("What you wan to create?\nArrival Flights - 1\nDeparture Flights - 2");
             ConsoleKeyInfo key2 = new ConsoleKeyInfo();

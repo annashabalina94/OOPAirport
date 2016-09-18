@@ -1,0 +1,6 @@
+C:\Users\Anna\Documents\GitHub\OOPAirport\OOPAirport1\bin\Debug\OOPAirport1.exe.config
+C:\Users\Anna\Documents\GitHub\OOPAirport\OOPAirport1\bin\Debug\OOPAirport1.exe
+C:\Users\Anna\Documents\GitHub\OOPAirport\OOPAirport1\bin\Debug\OOPAirport1.pdb
+C:\Users\Anna\Documents\GitHub\OOPAirport\OOPAirport1\obj\Debug\OOPAirport1.csprojResolveAssemblyReference.cache
+C:\Users\Anna\Documents\GitHub\OOPAirport\OOPAirport1\obj\Debug\OOPAirport1.exe
+C:\Users\Anna\Documents\GitHub\OOPAirport\OOPAirport1\obj\Debug\OOPAirport1.pdb

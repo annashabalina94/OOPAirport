@@ -8,36 +8,46 @@ namespace OOPAirport1
 {
     class Flight
     {
-        public List<Passengers> Passengersarr = new List<Passengers>();//Использовать инкапсуляцию. 
-        public string Price;
-        public Classprice Classprice;
-        public string Flightnumber;
-        public string Direction;
-        public string Datetime;
-        public string Terminal;
-        public string Gate;
-        public Status Status;
-        public FlightStatus FlightStatus;
+        public List<Passengers> Passengersarr { get; set; }
+        public string Price { get; set; }
+        public Classprice Classprice { get; set; }
+        public string Flightnumber { get; set; }
+        public string Direction { get; set; }
+        public string Datetime { get; set; }
+        public string Terminal { get; set; }
+        public string Gate { get; set; }
+        public Status Status { get; set; }
+        public FlightStatus FlightStatus { get; set; }
 
-        public Flight(Random random, Classprice bissnesm, Classprice economy, FlightStatus arrival, FlightStatus departure)
+        public Flight()
         {
-            Classprice = (Classprice)random.Next(1, 3);
-            if (FlightStatus == FlightStatus.Arrival)
-            {
-                Status = (Status)random.Next(3, 9);
-            }
-            else
-            {
-                Status = (Status)random.Next(1, 9);
-            }
-            if (Classprice == Classprice.Bissnes)
-            {
-                Price = "2000";
-            }
-            else
-            {
-                Price = "1000";
-            }
+            List<Passengers> Passengersarr;
+        }
+
+        public Flight(string price, Classprice classprice, string flightnumber, string direction, string datetime, string terminal, string gate, Status status, FlightStatus flightStatus)
+        {
+            this.Price = price;
+            this.Classprice = classprice;
+            this.Flightnumber = flightnumber;
+            this.Direction = direction;
+            this.Datetime = datetime;
+            this.Terminal = terminal;
+            this.Gate = gate;
+            this.Status = status;
+            this.FlightStatus = flightStatus;
+            this.Passengersarr = new List<Passengers>();
+        }
+
+        public void Addpassenger(string name, string secondname, string pasport, string dateofbirthday, Sex sex, Nationality nationality)
+        {
+            var passenger = new Passengers();
+            passenger.Name = name;
+            passenger.Secondname = secondname;
+            passenger.Pasport = pasport;
+            passenger.Dateofbirthday = dateofbirthday;
+            passenger.Sex = sex;
+            passenger.Nationality = nationality;
+            Passengersarr.Add(passenger);
         }
     }
 
